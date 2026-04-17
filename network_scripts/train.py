@@ -22,7 +22,7 @@ def train(adata, network, epochs=1, batch_size=32, output_dir=None, validation_s
         callbacks.append(checkpointer_cb)
     
     #Stop the training early if validation loss doesn't improve after 2 consecutive epochs.
-    earlystop_cb = EarlyStopping(monitor='val_loss',patience=4, restore_best_weights=True)
+    earlystop_cb = EarlyStopping(monitor='val_loss',patience=10, restore_best_weights=True)
     callbacks.append(earlystop_cb)
 
     #Set inputs + target output for the model and train:
