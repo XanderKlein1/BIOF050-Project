@@ -26,7 +26,6 @@ def train(adata, network, epochs=1, batch_size=32, output_dir=None, validation_s
     callbacks.append(earlystop_cb)
 
     #Set inputs + target output for the model and train:
-    #note: how to format the input data?
 
     inputs = {'feature counts': adata.X, 'library depth': adata.obs.library_depth}
     output = adata.X

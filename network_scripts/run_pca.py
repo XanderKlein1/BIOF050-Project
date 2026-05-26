@@ -14,4 +14,9 @@ def run_pca(adata):
     #Log transform the data
     X_norm = np.log1p(X_norm)
 
-    #Scale genes
+    #Gene-wise scaling (set mean = 0 and sd = 1 for all genes)
+    X_norm = (X_norm - X_norm.mean(axis=0)) / X_norm.std(axis=0)
+
+    #Run PCA on the data
+    pca = PCA(n_components=32)
+    X_pca = pca.fit_transform(X_norm)

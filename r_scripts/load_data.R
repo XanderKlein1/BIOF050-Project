@@ -18,6 +18,13 @@ intestine <- Load10X_Spatial(data.dir = localdir, bin.size = c(8,16))
 counts <- GetAssayData(intestine, assay = "Spatial.016um", layer="counts")
 counts <- t(counts)
 
+#Visualize library depth distribution
+hist(intestine$nCount_Spatial.016um, breaks=100,
+     main="Library depth distribution", xlab="UMIs per cell")
+
+#Normalize gene expression across library depths
+intestine <- NormalizeData(intestine)
+
 #Filter to remove lowly expressed bins:
 nCounts <- rowSums(counts)
 plot(nCounts, ylim=c(0,10000))
