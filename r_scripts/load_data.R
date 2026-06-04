@@ -11,7 +11,7 @@ library(Matrix)
 library(ggplot2)
 
 here::i_am("repo/r_scripts/load_data.R")
-localdir <- here("../data")
+localdir <- here("./data")
 intestine <- Load10X_Spatial(data.dir = localdir, bin.size = c(8,16))
 
 #Extract counts from the 16um bins data:
